@@ -96,9 +96,6 @@ avc_es_reader_c::read_headers() {
         break;
     }
 
-    if (parser.headers_parsed())
-      parser.flush();
-
     m_width  = parser.get_width();
     m_height = parser.get_height();
 
