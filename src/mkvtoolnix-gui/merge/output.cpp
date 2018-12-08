@@ -241,6 +241,7 @@ Tab::setupSplitModeLabelAndToolTips() {
             << Q("703M")
             << Q("800M")
             << Q("1000M")
+            << Q("4092M")
             << Q("4483M")
             << Q("8142M");
 
