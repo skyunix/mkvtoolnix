@@ -199,18 +199,6 @@ struct packet_t {
     return key_flag ? *key_flag : !has_bref() && !has_fref();
   }
 
-  bool
-  is_p_frame()
-    const {
-    return (has_bref() || has_fref()) && (has_bref() != has_fref());
-  }
-
-  bool
-  is_b_frame()
-    const {
-    return has_bref() && has_fref();
-  }
-
   packet_extension_c *
   find_extension(packet_extension_c::packet_extension_type_e type)
     const {
