@@ -51,7 +51,7 @@ list_languages() {
 /** \brief Map a string to a ISO 639-2 language code
 
    Searches the array of ISO 639 codes. If \c s is a valid ISO 639-2
-   code, a valid ISO 639-1 code, a valid terminology abbreviation
+   code, a valid ISO 639-1 code, a valid bibliographic abbreviation
    for an ISO 639-2 code or the English name for an ISO 639-2 code
    then it returns the index of that entry in the \c g_languages array.
 
@@ -70,7 +70,7 @@ look_up(std::string const &s,
   if (deprecated_code != s_deprecated_1_and_2_codes.end())
     source = deprecated_code->second;
 
-  auto lang_code = std::find_if(g_languages.begin(), g_languages.end(), [&source](auto const &lang) { return (lang.alpha_3_code == source) || (lang.terminology_abbrev == source) || (lang.alpha_2_code == source); });
+  auto lang_code = std::find_if(g_languages.begin(), g_languages.end(), [&source](auto const &lang) { return (lang.alpha_3_code == source) || (lang.alpha_3_bibliographic == source) || (lang.alpha_2_code == source); });
   if (lang_code != g_languages.end())
     return *lang_code;
 
