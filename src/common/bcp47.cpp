@@ -241,7 +241,7 @@ language_c::parse_language(std::string const &code) {
     return false;
   }
 
-  m_language = !language->alpha_2_code.empty() ? language->alpha_2_code : language->alpha_3_code;
+  m_language = !language->alpha_2_code.empty() ? language->alpha_2_code : (*language).get_iso639_alpha_3_code();
 
   return true;
 }
@@ -576,7 +576,7 @@ language_c::get_iso639_alpha_3_code()
 
   auto language = mtx::iso639::look_up(m_language);
   if (language)
-    return language->alpha_3_code;
+    return (*language).get_iso639_alpha_3_code();
 
   return {};
 }
@@ -592,7 +592,7 @@ language_c::get_closest_iso639_2_alpha_3_code()
     return "und"s;
 
   if (language->is_part_of_iso639_2)
-    return language->alpha_3_code;
+    return (*language).get_iso639_alpha_3_code();
 
   auto extlang = mtx::iana::language_subtag_registry::look_up_extlang(language->alpha_3_code);
   if (!extlang || extlang->prefixes.empty())
@@ -601,7 +601,7 @@ language_c::get_closest_iso639_2_alpha_3_code()
   auto prefix_language = mtx::iso639::look_up(extlang->prefixes.front());
 
   if (prefix_language && prefix_language->is_part_of_iso639_2)
-    return prefix_language->alpha_3_code;
+    return (*prefix_language).get_iso639_alpha_3_code();
 
   return "und"s;
 }

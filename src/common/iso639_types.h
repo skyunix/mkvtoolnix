@@ -31,6 +31,7 @@ struct language_t {
     , is_deprecated{p_is_deprecated}
   {
   }
+  std::string get_iso639_alpha_3_code() const;
 };
 
 extern std::vector<language_t> g_languages;

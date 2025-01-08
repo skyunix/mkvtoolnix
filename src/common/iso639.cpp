@@ -17,6 +17,7 @@
 #include <unordered_map>
 
 #include "common/iso639.h"
+#include "common/bcp47.h"
 #include "common/strings/editing.h"
 #include "common/strings/table_formatter.h"
 #include "common/strings/utf8.h"
@@ -99,6 +100,14 @@ look_up(std::string const &s,
   }
 
   return {};
+}
+
+std::string
+language_t::get_iso639_alpha_3_code()
+  const {
+  if (mtx::bcp47::language_c::bibliographic_language_codes_are_used() && !alpha_3_bibliographic.empty())
+    return alpha_3_bibliographic;
+  return alpha_3_code;
 }
 
 } // namespace mtx::iso639
