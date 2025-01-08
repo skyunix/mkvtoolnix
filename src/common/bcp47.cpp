@@ -29,6 +29,7 @@
 namespace mtx::bcp47 {
 
 bool language_c::ms_disabled                           = false;
+bool language_c::ms_bibliographic_language_codes_used  = false;
 normalization_mode_e language_c::ms_normalization_mode = normalization_mode_e::default_mode;
 
 bool
@@ -952,6 +953,16 @@ language_c::disable() {
 bool
 language_c::is_disabled() {
   return ms_disabled;
+}
+
+void
+language_c::use_bibliographic_language_codes() {
+  ms_bibliographic_language_codes_used = true;
+}
+
+bool
+language_c::bibliographic_language_codes_are_used() {
+  return ms_bibliographic_language_codes_used;
 }
 
 void
