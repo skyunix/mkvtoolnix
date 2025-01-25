@@ -19,6 +19,7 @@
 # include <windows.h>
 #endif
 
+#include "common/bcp47.h"
 #include "common/command_line.h"
 #if defined(SYS_APPLE)
 # include "common/fs_sys_helpers.h"
@@ -216,6 +217,10 @@ handle_common_args(std::vector<std::string> &args,
 
     } else if (args[i] == "--abort-on-warnings") {
       g_abort_on_warnings = true;
+      args.erase(args.begin() + i, args.begin() + i + 1);
+
+    } else if (args[i] == "--enable-bibliographic-language-codes") {
+      mtx::bcp47::language_c::use_bibliographic_language_codes();
       args.erase(args.begin() + i, args.begin() + i + 1);
 
     } else

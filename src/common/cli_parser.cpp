@@ -185,17 +185,18 @@ parser_c::add_common_options() {
     add_option(name, std::bind(&parser_c::dummy_callback, this), description);
   };
 
-  OPT("v|verbose",                      YT("Increase verbosity."));
-  OPT("q|quiet",                        YT("Suppress status output."));
-  OPT("ui-language=<code>",             YT("Force the translations for 'code' to be used."));
-  OPT("command-line-charset=<charset>", YT("Charset for strings on the command line"));
-  OPT("output-charset=<cset>",          YT("Output messages in this charset"));
-  OPT("r|redirect-output=<file>",       YT("Redirects all messages into this file."));
-  OPT("flush-on-close",                 YT("Flushes all cached data to storage when closing a file opened for writing."));
-  OPT("abort-on-warnings",              YT("Aborts the program after the first warning is emitted."));
-  OPT("@option-file.json",              YT("Reads additional command line options from the specified JSON file (see man page)."));
-  OPT("h|help",                         YT("Show this help."));
-  OPT("V|version",                      YT("Show version information."));
+  OPT("v|verbose",                           YT("Increase verbosity."));
+  OPT("q|quiet",                             YT("Suppress status output."));
+  OPT("ui-language=<code>",                  YT("Force the translations for 'code' to be used."));
+  OPT("command-line-charset=<charset>",      YT("Charset for strings on the command line"));
+  OPT("output-charset=<cset>",               YT("Output messages in this charset"));
+  OPT("r|redirect-output=<file>",            YT("Redirects all messages into this file."));
+  OPT("flush-on-close",                      YT("Flushes all cached data to storage when closing a file opened for writing."));
+  OPT("abort-on-warnings",                   YT("Aborts the program after the first warning is emitted."));
+  OPT("@option-file.json",                   YT("Reads additional command line options from the specified JSON file (see man page)."));
+  OPT("enable-bibliographic-language-codes", YT("When available, use the bibliographic alpha 3 codes instead of the terminological ones."));
+  OPT("h|help",                              YT("Show this help."));
+  OPT("V|version",                           YT("Show version information."));
 }
 
 void

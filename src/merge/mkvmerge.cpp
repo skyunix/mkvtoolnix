@@ -141,6 +141,9 @@ set_usage() {
                   "                           Do not write tags with track statistics.\n");
   usage_text += Y("  --disable-language-ietf  Do not write IETF BCP 47 language elements in\n"
                   "                           track headers, chapters and tags.\n");
+  usage_text += Y("  --enable-bibliographic-language-codes\n"
+                  "                           When available, use the bibliographic alpha 3\n"
+                  "                           codes instead of the terminological ones.\n");
   usage_text += Y("  --normalize-language-ietf <canonical|extlang|off>\n"
                   "                           Normalize all IETF BCP 47 language tags to either\n"
                   "                           their canonical or their extended language subtags\n"

@@ -59,6 +59,7 @@ protected:
   mutable bool m_formatted_up_to_date{};
 
   static bool ms_disabled;
+  static bool ms_bibliographic_language_codes_used;
   static normalization_mode_e ms_normalization_mode;
 
 public:
@@ -140,6 +141,8 @@ public:
 
   static void disable();
   static bool is_disabled();
+  static void use_bibliographic_language_codes();
+  static bool bibliographic_language_codes_are_used();
 };
 
 void init_re();
