@@ -1,5 +1,12 @@
 # Version ?
 
+## New features and enhancements
+
+* MKVToolNix GUI: the GUI will now remember the last used directory for
+  selecting audio files for playback in "play audio file" program runners
+  separately from any other "open file"-type situations. This directory will
+  also default to `/System/Library/Sounds` on macOS now. Implemented by #6213.
+
 ## Bug fixes
 
 * macOS: GUI: the default audio file for program runners of type "play audio
