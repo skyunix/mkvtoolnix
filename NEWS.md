@@ -27,7 +27,10 @@
 * macOS: `build.sh`: disabled use of `pkg-config` for Qt to prevent linking
   against installed non-OS libraries such as from Homebrew. Patch by
   corticalcode. Fixes #6208.
-
+* macOS: added support for notarization of a macOS disk image by an Apple
+  developer account. Implementation of #6212 by Touchstone64.
+* macOS: patch added to make building Qt 6.11 from source possible on macOS
+  26.4. Patch by Touchstone64.
 
 # Version 98.0 "Chonks" 2026-04-05
 
