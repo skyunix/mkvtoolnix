@@ -387,6 +387,10 @@ Trinine <trinine@free.fr>
 Trottel <trottel09@gmail.com>
     * Czech translation
 
+Touchstone64 <touchstone64@gweb.me.uk>
+    * macOS build notarization
+    * macOS build patches
+
 Ulrik Mikaelsson <ulrik.mikaelsson@gmail.com>
     * Use extension as hint when determining source format
 
