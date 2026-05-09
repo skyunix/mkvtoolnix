@@ -239,14 +239,18 @@ MuxJob::runProgramSetupVariables(ProgramRunner::VariableMap &variables)
   const{
   Job::runProgramSetupVariables(variables);
 
-  auto &cfg = config();
+  auto &cfg          = config();
+  auto destinationFI = QFileInfo{ cfg.m_destination };
+  auto path          = QDir::toNativeSeparators(destinationFI.absolutePath());
 
   // OUTPUT_… are kept for backwards compatibility.
   variables[Q("JOB_TYPE")]                   << Q("multiplexer");
   variables[Q("OUTPUT_FILE_NAME")]           << QDir::toNativeSeparators(cfg.m_destination);
-  variables[Q("OUTPUT_FILE_DIRECTORY")]      << QDir::toNativeSeparators(QFileInfo{ cfg.m_destination }.path());
+  variables[Q("OUTPUT_FILE_DIRECTORY")]      << QDir::toNativeSeparators(path);
+  variables[Q("DESTINATION_FILE_BASE_NAME")] << QDir::toNativeSeparators(destinationFI.completeBaseName());
+  variables[Q("DESTINATION_FILE_DIRECTORY")] << QDir::toNativeSeparators(path);
   variables[Q("DESTINATION_FILE_NAME")]      << QDir::toNativeSeparators(cfg.m_destination);
-  variables[Q("DESTINATION_FILE_DIRECTORY")] << QDir::toNativeSeparators(QFileInfo{ cfg.m_destination }.path());
+  variables[Q("DESTINATION_FILE_SUFFIX")]    << QDir::toNativeSeparators(destinationFI.suffix());
   variables[Q("CHAPTERS_FILE_NAME")]         << QDir::toNativeSeparators(cfg.m_chapters);
 
   for (auto const &sourceFile : cfg.m_files) {
