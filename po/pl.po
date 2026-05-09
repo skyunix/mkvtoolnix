@@ -3873,6 +3873,7 @@ msgid_plural "{0} seconds"
 msgstr[0] "{0} sekunda"
 msgstr[1] "{0} sekundy"
 msgstr[2] "{0} sekunda"
+msgstr[3] "{0} sekunda"
 
 #: src/common/strings/formatting.cpp:282
 #, no-c-format, c++-format
@@ -3881,6 +3882,7 @@ msgid_plural "{0} minutes"
 msgstr[0] "{0} minuta"
 msgstr[1] "{0} minuty"
 msgstr[2] "{0} minuta"
+msgstr[3] "{0} minuta"
 
 #: src/common/strings/formatting.cpp:292
 #, no-c-format, c++-format
@@ -3889,6 +3891,7 @@ msgid_plural "{0} bytes"
 msgstr[0] "{0} bajt"
 msgstr[1] "{0} bajty"
 msgstr[2] "{0} bajt"
+msgstr[3] "{0} bajt"
 
 #: src/common/strings/formatting.cpp:298
 #, no-c-format, c++-format
@@ -5739,6 +5742,7 @@ msgid_plural "Chapters: {0} entries"
 msgstr[0] "Rozdziały: {0} pozycja"
 msgstr[1] "Rozdziały: {0} pozycje"
 msgstr[2] "Rozdziały: {0} wpisów"
+msgstr[3] "Rozdziały: {0} wpisów"
 
 #: src/merge/generic_reader.cpp:305
 #, no-c-format, c++-format
@@ -5747,6 +5751,7 @@ msgid_plural "Global tags: {0} entries"
 msgstr[0] "Tagi globalne: {0} wpis"
 msgstr[1] "Tagi globalne: {0} pozycje"
 msgstr[2] "Tagi globalne: {0} pozycji"
+msgstr[3] "Tagi globalne: {0} pozycji"
 
 #: src/merge/generic_reader.cpp:308
 #, no-c-format, c++-format
@@ -5755,6 +5760,7 @@ msgid_plural "Tags for track ID {0}: {1} entries"
 msgstr[0] "Nie podano ID ścieżki w {0}: {1}"
 msgstr[1] "Nie podano ID ścieżki w {0}: {1}"
 msgstr[2] "Nie podano ID ścieżki w {0}: {1}"
+msgstr[3] "Nie podano ID ścieżki w {0}: {1}"
 
 #: src/merge/generic_reader.cpp:500
 #, no-c-format, c++-format
@@ -7904,6 +7910,7 @@ msgid_plural "Scanning {0} files in {1} playlists.\n"
 msgstr[0] "Skanowanie {0} plików na liście odtwarzania {1}.\n"
 msgstr[1] "Skanowanie {0} plików w {1} listach odtwarzania.\n"
 msgstr[2] "Skanowanie {0} plików w {1} listach odtwarzania.\n"
+msgstr[3] "Skanowanie {0} plików w {1} listach odtwarzania.\n"
 
 #: src/merge/mkvmerge.cpp:3109
 #, no-c-format
@@ -7917,6 +7924,7 @@ msgid_plural "Only {0} chapters found in source files & chapter files."
 msgstr[0] "Znaleziono tylko {0} rozdziałów w plikach źródłowych i plikach rozdziałów."
 msgstr[1] "Znaleziono tylko {0} rozdziały w plikach źródłowych i plikach rozdziałów."
 msgstr[2] "Znaleziono tylko {0} rozdziałów w plikach źródłowych i plikach rozdziałów."
+msgstr[3] "Znaleziono tylko {0} rozdziałów w plikach źródłowych i plikach rozdziałów."
 
 #: src/merge/mkvmerge.cpp:3156
 #, no-c-format
@@ -12259,6 +12267,7 @@ msgid_plural "Length: %1 bytes"
 msgstr[0] "Długość: %1 bajt"
 msgstr[1] "Długość: %1 bajty"
 msgstr[2] "Długość: %1 bajtów"
+msgstr[3] "Długość: %1 bajtów"
 
 #: src/mkvtoolnix-gui/info/element_highlighter.cpp:77
 #, no-c-format
@@ -14298,6 +14307,7 @@ msgid_plural "%1+%2 warnings"
 msgstr[0] "%1+%2 ostrzeżenie"
 msgstr[1] "%1+%2 ostrzeżenia"
 msgstr[2] "%1+%2 ostrzeżeń"
+msgstr[3] "%1+%2 ostrzeżeń"
 
 #: src/mkvtoolnix-gui/main_window/status_bar_progress_widget.cpp:117
 #, no-c-format
@@ -14306,6 +14316,7 @@ msgid_plural "%1+%2 errors"
 msgstr[0] "%1+%2 błąd"
 msgstr[1] "%1+%2 błędy"
 msgstr[2] "%1+%2 błędów"
+msgstr[3] "%1+%2 błędów"
 
 #: src/mkvtoolnix-gui/main_window/status_bar_progress_widget.cpp:131
 #, no-c-format
@@ -16496,6 +16507,7 @@ msgid_plural "This audio track contains {0} bytes of invalid data which were ski
 msgstr[0] "Ta ścieżka audio zawiera {0} bajtów błędnych danych, które zostały pominięte przed znacznikiem czasu {1}."
 msgstr[1] "Te ścieżki audio zawierają {0} bajtów błędnych danych, które zostały pominięte przed znacznikiem czasu {1}."
 msgstr[2] "Ta ścieżka audio zawiera {0} bajtów nieprawidłowych danych, które zostały pominięte przed znacznikiem czasu {1}."
+msgstr[3] "Ta ścieżka audio zawiera {0} bajtów nieprawidłowych danych, które zostały pominięte przed znacznikiem czasu {1}."
 
 #: src/output/p_ac3.cpp:83
 #: src/output/p_mp3.cpp:71
@@ -18288,4 +18300,3 @@ msgstr "Nie znaleziono żadnej ścieżki odnoszącej się do specyfikacji edytow
 
 #~ msgid "{0}: Could not open the sub file"
 #~ msgstr "{0}: Nie można otworzyć pliku sub"
-
