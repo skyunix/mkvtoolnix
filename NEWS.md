@@ -13,6 +13,9 @@
   e.g. `/movies/A.new.hope.mkv` → `mkv`). Added examples to all the
   destination file variables in the popup menu when adding variables in the
   preferences. Implements parts of #6220.
+* MKVToolNix GUI: executing actions → running programs: the command-line input
+  widget will now receive focus again after using the popup menu for adding a
+  variable. Implements parts of #6220.
 
 ## Bug fixes
 

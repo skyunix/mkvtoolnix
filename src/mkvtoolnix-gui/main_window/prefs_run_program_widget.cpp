@@ -385,6 +385,7 @@ PrefsRunProgramWidget::changeArguments(std::function<void(QStringList &)> const 
   worker(arguments);
 
   p->ui->leCommandLine->setText(Util::escape(arguments, Util::EscapeShellUnix).join(Q(" ")));
+  p->ui->leCommandLine->setFocus();
 }
 
 Util::Settings::RunProgramConfigPtr
