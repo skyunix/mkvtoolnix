@@ -16,6 +16,9 @@
 * MKVToolNix GUI: executing actions → running programs: the command-line input
   widget will now receive focus again after using the popup menu for adding a
   variable. Implements parts of #6220.
+* MKVToolNix GUI: executing actions → running programs: the variables will now
+  also be set as environment variables when running a program after a job
+  completes.
 
 ## Bug fixes
 
