@@ -19,6 +19,10 @@
 * MKVToolNix GUI: executing actions → running programs: the variables will now
   also be set as environment variables when running a program after a job
   completes.
+* MKVToolNix GUI: executing actions → running programs: when using the
+  "Execute now" button for testing the `MTX_…` variables will be set to the
+  current multiplexer tab's values for easier testing. Implements parts of
+  #6220.
 
 ## Bug fixes
 

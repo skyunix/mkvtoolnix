@@ -2,6 +2,7 @@
 
 #include <QAction>
 #include <QCursor>
+#include <QDateTime>
 #include <QDir>
 #include <QMenu>
 
@@ -9,7 +10,9 @@
 #include "mkvtoolnix-gui/app.h"
 #include "mkvtoolnix-gui/forms/main_window/prefs_run_program_widget.h"
 #include "mkvtoolnix-gui/jobs/program_runner.h"
+#include "mkvtoolnix-gui/main_window/main_window.h"
 #include "mkvtoolnix-gui/main_window/prefs_run_program_widget.h"
+#include "mkvtoolnix-gui/merge/tool.h"
 #include "mkvtoolnix-gui/util/file_dialog.h"
 #include "mkvtoolnix-gui/util/settings.h"
 #include "mkvtoolnix-gui/util/string.h"
@@ -321,8 +324,23 @@ PrefsRunProgramWidget::isValid()
 
 void
 PrefsRunProgramWidget::executeNow() {
-  if (isValid())
-    App::programRunner().run(Util::Settings::RunNever, [](Jobs::ProgramRunner::VariableMap &) {}, config());
+  if (!isValid())
+    return;
+
+  auto setupVariables = [](Jobs::ProgramRunner::VariableMap &variables) {
+    auto now = QDateTime::currentDateTime();
+
+    // dummy values for jobs/job.cpp:
+    variables[Q("JOB_START_TIME")]  << now.addSecs(-1 * (4 * 60 + 20)).toString(Qt::ISODate);
+    variables[Q("JOB_END_TIME")]    << now.toString(Qt::ISODate);
+    variables[Q("JOB_DESCRIPTION")] << QY("example values from the current multiplexer tab");
+    variables[Q("JOB_EXIT_CODE")]   << Q("0");
+
+    // current tab's values for jobs/mux_job.cpp:
+    MainWindow::mergeTool()->runProgramSetupVariablesForCurrentTab(variables);
+  };
+
+  App::programRunner().run(Util::Settings::RunNever, setupVariables, config());
 }
 
 void
