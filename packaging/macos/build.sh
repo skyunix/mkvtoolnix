@@ -390,9 +390,9 @@ function build_docbook_xsl {
 function build_configured_mkvtoolnix {
   if [[ -z ${MTX_VER} ]] fail Variable MTX_VER not set
 
-  dmgbase=${CMPL}/dmg-${MTX_VER}
-  dmgcnt=$dmgbase/MKVToolNix-${MTX_VER}.app/Contents
-  dmgmac=$dmgcnt/MacOS
+  local dmgbase=${CMPL}/dmg-${MTX_VER}
+  local dmgcnt=$dmgbase/${APP_BUNDLE_NAME}/Contents
+  local dmgmac=$dmgcnt/MacOS
 
   local -a args
   args=(
@@ -462,11 +462,11 @@ function build_dmg {
 
   if [[ -f packaging/macos/unlock_keychain.sh ]] packaging/macos/unlock_keychain.sh
 
-  dmgbase=${CMPL}/dmg-${MTX_VER}
-  dmgapp=$dmgbase/MKVToolNix-${MTX_VER}.app
-  dmgcnt=$dmgapp/Contents
-  dmgmac=$dmgcnt/MacOS
-  latest_link=${CMPL}/latest
+  local dmgbase=${CMPL}/dmg-${MTX_VER}
+  local dmgapp=$dmgbase/${APP_BUNDLE_NAME}
+  local dmgcnt=$dmgapp/Contents
+  local dmgmac=$dmgcnt/MacOS
+  local latest_link=${CMPL}/latest
 
   rm -f ${latest_link}
 
@@ -496,7 +496,7 @@ releases that work on older macOS versions can be found at
 https://mkvtoolnix.download/downloads.html#macosx-old
 
 If you need the command line tools then copy mkvextract, mkvinfo,
-mkvmerge and mkvproedit from ./MKVToolNix-${MTX_VER}/Contents/MacOS/
+mkvmerge and mkvproedit from ./${APP_BUNDLE_NAME}/Contents/MacOS/
 to /usr/local/bin
 
 EOF
@@ -549,7 +549,7 @@ EOF
       if [[ ${FILE} != */MacOS/mkv* ]] non_executables+=(${FILE})
     }
 
-    harden=""
+    local harden=""
     if [[ -n ${NOTARY_PROFILE} ]] harden="--options=runtime"
 
     codesign --force --sign ${SIGNATURE_IDENTITY} ${non_executables}
@@ -558,8 +558,13 @@ EOF
 
   if [[ -n $DMG_NO_DMG ]] return
 
-  machine=$(uname -m)
-  volumename=MKVToolNix-${MTX_VER}-${machine}
+  if [[ -z ${DMG_REVISION} ]]; then
+    fail Variable DMG_REVISION not set
+  fi
+
+  local machine=$(uname -m)
+  local dmg_label=MKVToolNix-${MTX_VER}-${DMG_REVISION}-${machine}
+  local volumename=${dmg_label}
   if [[ $DMG_PRE == 1 ]]; then
     # Ziel: 29.0.0-revision-008-gb71b2b27c-01808
     # describe: release-29.0.0-8-gb71b2b27c
@@ -572,15 +577,15 @@ EOF
     while [[ $build != *-*-*-* ]]; do
       build=${build}-0
     done
-    num=${${${build#release-}#*-}%-*}
-    hash=${build##*-}
-    revision="revision-$(printf '%03d' ${num})-${hash}-${build_number}"
+    local num=${${${build#release-}#*-}%-*}
+    local hash=${build##*-}
+    local revision="revision-$(printf '%03d' ${num})-${hash}-${build_number}"
 
     volumename=${volumename}-${revision}
   fi
 
-  dmgname=${CMPL}/MKVToolNix-${MTX_VER}-${machine}.dmg
-  dmgbuildname=${CMPL}/${volumename}.dmg
+  local dmgname=${CMPL}/${dmg_label}.dmg
+  local dmgbuildname=${CMPL}/${volumename}.dmg
 
   rm -f ${dmgname} ${dmgbuildname}
   hdiutil create -srcfolder ${dmgbase} -volname ${volumename} \
