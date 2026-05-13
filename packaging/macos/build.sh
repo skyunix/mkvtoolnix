@@ -339,6 +339,7 @@ function build_qt {
     -no-avx512
 
     -no-feature-cups
+    -no-feature-printsupport
     -no-feature-dbus
     -no-feature-glib
     -no-feature-openssl
@@ -524,7 +525,7 @@ EOF
 
   mkdir -p ${dmgmac}/libs
   cp -v -a \
-     ${TARGET}/lib/libQt6{Concurrent*.dylib,Core*.dylib,Gui*.dylib,Multimedia*.dylib,Network*.dylib,PrintSupport*.dylib,Svg*.dylib,Widgets*.dylib} \
+     ${TARGET}/lib/libQt6{Concurrent*.dylib,Core*.dylib,Gui*.dylib,Multimedia*.dylib,Network*.dylib,Svg*.dylib,Widgets*.dylib} \
      ${TARGET}/lib/libboost_system*.dylib \
      ${dmgmac}/libs/
 

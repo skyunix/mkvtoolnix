@@ -58,6 +58,8 @@
 * macOS: the app bundle name has been standardised by removing the version
   number, so DMG packages will contain 'MKVToolNix.app'. Implementation by
   Touchstone64.
+* macOS: Qt is now built without printing support, reducing the size of the
+  resulting DMG slightly. Implementation by Corticalcode. Implements #6230.
 
 # Version 98.0 "Chonks" 2026-04-05
 
