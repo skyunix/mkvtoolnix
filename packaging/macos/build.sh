@@ -292,31 +292,6 @@ function build_cmark {
     -DCMARK_SHARED=OFF
 }
 
-function build_curl {
-  build_package curl \
-    --prefix=${TARGET} \
-    --disable-silent-rules \
-    --enable-ipv6 \
-    --without-brotli \
-    --without-cyassl \
-    --without-gnutls \
-    --without-gssapi \
-    --without-libmetalink \
-    --without-librtmp \
-    --without-libssh2 \
-    --without-nghttp2 \
-    --without-nss \
-    --without-polarssl \
-    --without-spnego \
-    --without-darwinssl \
-    --disable-ares \
-    --disable-ldap \
-    --disable-ldaps \
-    --with-zlib=${TARGET} \
-    --with-ssl=${TARGET} \
-    --with-ca-path=${TARGET}/etc/openssl/certs
-}
-
 function build_qt {
   local -a args
   args=(
