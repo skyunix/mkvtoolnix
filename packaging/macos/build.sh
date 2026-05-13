@@ -403,17 +403,11 @@ function retrieve_verified_source_tarball {
     curl -o ${SRCDIR}/${tarball_name} ${SOURCES_URL}/${tarball_name}
   fi
 
-  local keyring=$(uuidgen).keyring
-  local keybox=$( gpg --no-default-keyring --keyring ${keyring} \
-    --list-keys 2>&1 \
-    | awk -F"'" '/keybox.*created/ { print $2 }' )
-  if [[ -z ${keybox} ]]; then
-    fail Build requires an empty GPG keyring but {$keyring} already exists
-  fi
+  local gpghome=$(mktemp -d)
 
-  gpg --no-default-keyring --keyring ${keyring} --import ${SRCDIR}/${public_key_name} 2>&1
+  gpg --homedir ${gpghome} --import ${SRCDIR}/${public_key_name} 2>&1
 
-  local signature_identity=$( gpg --no-default-keyring --keyring ${keyring} \
+  local signature_identity=$( gpg --homedir ${gpghome} \
     --verify ${SRCDIR}/${signature_name} ${SRCDIR}/${tarball_name} 2>&1 \
     | awk -F"<|>" '/Good signature/ { print $2 }' )
 
@@ -421,7 +415,7 @@ function retrieve_verified_source_tarball {
     fail Source tarball ${tarball_name} is not signed by ${AUTHOR_IDENTITY}
   fi
 
-  rm -f ${keybox}
+  rm -rf ${gpghome}
 }
 
 function build_mkvtoolnix {
