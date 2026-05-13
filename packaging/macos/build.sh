@@ -49,7 +49,7 @@ function retrieve_file {
     fi
 
     echo "Warning: file ${file} exists but has the wrong checksum; retrieving anew"
-    rm ${file}
+    command rm ${file}
   fi
 
   if [[ ! -f ${file} ]]; then
@@ -478,7 +478,7 @@ function build_dmg {
 
   strip ${dmgcnt}/MacOS/mkv{merge,info,extract,propedit,toolnix-gui}
 
-  mv ${dmgmac}/mkvtoolnix ${dmgmac}/data
+  command mv ${dmgmac}/mkvtoolnix ${dmgmac}/data
 
   cp README.md $dmgbase/README.txt
   cp COPYING $dmgbase/COPYING.txt
@@ -598,7 +598,7 @@ EOF
     xcrun notarytool submit ${dmgname} --keychain-profile ${NOTARY_PROFILE} --wait
   fi
 
-  if [[ ${dmgname} != ${dmgbuildname} ]] mv ${dmgname} ${dmgbuildname}
+  if [[ ${dmgname} != ${dmgbuildname} ]] command mv ${dmgname} ${dmgbuildname}
 
   ln -s ${dmgbuildname} ${latest_link}
 }
