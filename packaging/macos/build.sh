@@ -363,6 +363,10 @@ function build_docbook_xsl {
   ln -s ${${spec_docbook_xsl[1]}%%.tar*} ${DOCBOOK_XSL_ROOT_DIR}
 }
 
+function build_gpg {
+  build_package gpg --prefix=${TARGET}
+}
+
 function build_configured_mkvtoolnix {
   if [[ -z ${MTX_VER} ]] fail Variable MTX_VER not set
 
@@ -598,6 +602,7 @@ if [[ -z $@ ]]; then
   build_gmp
   build_boost
   build_qt
+  build_gpg
   build_mkvtoolnix
 
 else
