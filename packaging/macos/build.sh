@@ -433,7 +433,7 @@ function retrieve_verified_source_tarball {
   fi
 
   gpg --no-default-keyring --keyring ${keyring} --import ${SRCDIR}/${public_key_name} 2>&1
-  
+
   local signature_identity=$( gpg --no-default-keyring --keyring ${keyring} \
     --verify ${SRCDIR}/${signature_name} ${SRCDIR}/${tarball_name} 2>&1 \
     | awk -F"<|>" '/Good signature/ { print $2 }' )
