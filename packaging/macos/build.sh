@@ -418,11 +418,14 @@ function retrieve_verified_source_tarball {
   local tarball_name=mkvtoolnix-${MTX_VER}.tar.xz
   local signature_name=${tarball_name}.sig
 
-  rm -f ${SRCDIR}/${public_key_name} ${SRCDIR}/${tarball_name} ${SRCDIR}/${signature_name}
+  rm -f ${SRCDIR}/${public_key_name} ${SRCDIR}/${signature_name}
 
   curl -o ${SRCDIR}/${public_key_name} ${AUTHOR_PUBLIC_KEY_URL}
-  curl -o ${SRCDIR}/${tarball_name} ${SOURCES_URL}/${tarball_name}
   curl -o ${SRCDIR}/${signature_name} ${SOURCES_URL}/${signature_name}
+
+  if [[ ! -f ${SRCDIR}/${tarball_name} ]]; then
+    curl -o ${SRCDIR}/${tarball_name} ${SOURCES_URL}/${tarball_name}
+  fi
 
   local keyring=$(uuidgen).keyring
   local keybox=$( gpg --no-default-keyring --keyring ${keyring} \
