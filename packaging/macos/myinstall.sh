@@ -4,6 +4,7 @@ set -e
 set -x
 
 source ${0:h}/config.sh
+[[ -f ${0:h}/config.local.sh ]] && source ${0:h}/config.local.sh
 
 MODE=
 FILE=
@@ -45,7 +46,7 @@ function run_uninstall {
   tar tzf ${FILE} > ${tmpfile}
   grep -v '/$' ${tmpfile} | tr '\n' '\0' | xargs -0 $DEBUG rm -f
   grep    '/$' ${tmpfile} | perl -le '$/ = ""; print join("\n", reverse split(/\n/, <>))' | tr '\n' '\0' | xargs -0 $DEBUG rmdir || true
-  rm ${tmpfile}
+  command rm ${tmpfile}
 }
 
 function run_install {
