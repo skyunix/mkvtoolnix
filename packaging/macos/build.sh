@@ -8,6 +8,8 @@ setopt nullglob
 export SCRIPT_PATH=${0:a:h}
 source ${SCRIPT_PATH}/config.sh
 test -f ${SCRIPT_PATH}/config.local.sh && source ${SCRIPT_PATH}/config.local.sh
+export PATH=${TARGET}/bin:$PATH
+export DYLD_LIBRARY_PATH=${TARGET}/lib:${DYLD_LIBRARY_PATH}
 source ${SCRIPT_PATH}/specs.sh
 
 RAKE=./drake
