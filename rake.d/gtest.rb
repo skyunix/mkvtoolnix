@@ -42,6 +42,12 @@ $build_system_modules[:gtest] = {
 
     gtest_gui_sources.default = []
 
+    conditions = {
+      'gui' => $build_mkvtoolnix_gui,
+    }
+
+    conditions.default = true
+
     #
     # Google Test framework
     #
@@ -58,6 +64,8 @@ $build_system_modules[:gtest] = {
       create
 
     $gtest_apps.each do |app|
+      next if !conditions[app]
+
       Application.
         new("tests/unit/#{app}/#{app}").
         description("Build the unit tests executable for '#{app}'").
