@@ -11,6 +11,11 @@
 * all: added new scalable (SVG) application icons for all applications,
   replacing the existing pixmap (PNG, ICO) icons. Icons from Sarreq
   Teryx. Implements #6253.
+* MKVToolNix GUI: job queue: added a context menu for opening copies of the
+  selected queue jobs in the multiplexer as new settings there without
+  removing the queue jobs. Implements #6255.
+* MKVToolNix GUI: job queue: added a search functionality for jobs that
+  searches in job descriptions, outputs, warnings & errors. Implements #6256.
 
 ## Bug fixes
 
@@ -30,6 +35,9 @@
 * all: when building for Windows the programs ImageMagick (executable
   `magick`) & Inkscape (executable `inkscape`) are required in order to build
   ICOs from SVGs.
+* macOS: include the app's supported platform(s) in `Info.plist` to correctly
+  resolve the app's Kind as Apple Silicon in System Information. Detected
+  during discussion of #6260.
 
 
 # Version 99.0 "Buka" 2026-05-24
