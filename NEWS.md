@@ -10,11 +10,19 @@
 * Windows: fixed converting the scalable SVG icons into the bitmap `.ico` ones
   used on Windows so that the grey background remains uniform & doesn't get
   garbled. Fixes #6280.
+* mkvmerge: TrueHD parser: fixed mkvmerge dropping the last TrueHD frame if
+  its size was smaller than 12 bytes. Fixes #6296.
+* MKVToolNix GUI: job runner: the variable `<MTX_INSTALLATION_DIRECTORY>` will
+  be replaed in the executable position of the command-line for the program to
+  execute again. Fixes #6299.
 
 ## Build system changes
 
-* The bundled libraries `libEBML` & `libMatroska` were updated to v1.4.7 &
-  v1.7.2 respectively.
+* The bundled libraries libEBML & libMatroska were updated to v1.4.7 &
+  v1.7.2 respectively. Those versions fix various possible invalid memory
+  accesses when reading data broken in certain, very specific ways, making
+  them security sensitive.
+* libEBML v1.4.7 & libMatroska v1.7.22 are now required.
 * The meta info file `org.bunkus.mkvtoolnix-gui.appdata.xml` was renamed
   to `org.bunkus.mkvtoolnix-gui.metainfo.xml`.
 
