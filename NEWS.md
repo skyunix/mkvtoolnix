@@ -1,5 +1,11 @@
 # Version ?
 
+## Bug fixes
+
+* MKVToolNix GUI: executing actions, type "execute a program": all the
+  variables (`<MTX_…>`) will now be replaced again in the argument list to the
+  program to be executed. This was broken in v100. Fixes #6306.
+
 ## Security fixes
 
 * avilib: fixed potential heap overflows/invalid memory access in the ODML
