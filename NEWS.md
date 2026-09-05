@@ -12,7 +12,7 @@
   index handling due to unsiged integer multiplication wrapping around
   (colloquially known as "overflowing") with specifically crafted AVI
   files. Affects only mkvmerge as the other tools do not read AVIs. Reported
-  by Tristan <TristanInSec@gmail.com>.
+  by Tristan Madani <TristanInSec@gmail.com>.
 
 
 # Version 101.0 "Time To Turn" 2026-08-24
